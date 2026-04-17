@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 const LOGO_URL = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/bucket/c8dca91b-8f8c-45dd-bc71-71706cb0bbd4.png";
@@ -123,11 +123,8 @@ export default function Index() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [badgeBottom, setBadgeBottom] = useState<number | undefined>(undefined);
   const menuRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setTimeout>>();
-  const btnCallRef = useRef<HTMLButtonElement>(null);
-  const rightColRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -166,18 +163,7 @@ export default function Index() {
     setMenuOpen(false);
   };
 
-  const calcBadgeBottom = useCallback(() => {
-    if (!btnCallRef.current || !rightColRef.current) return;
-    const btnRect = btnCallRef.current.getBoundingClientRect();
-    const colRect = rightColRef.current.getBoundingClientRect();
-    setBadgeBottom(colRect.bottom - btnRect.bottom);
-  }, []);
 
-  useEffect(() => {
-    calcBadgeBottom();
-    window.addEventListener("resize", calcBadgeBottom);
-    return () => window.removeEventListener("resize", calcBadgeBottom);
-  }, [calcBadgeBottom]);
 
   return (
     <div className="min-h-screen bg-white font-golos">
@@ -246,7 +232,7 @@ export default function Index() {
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-4 pb-4 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left */}
             <div className="space-y-8">
@@ -274,7 +260,7 @@ export default function Index() {
                   Получить консультацию
                   <Icon name="ArrowRight" size={16} />
                 </button>
-                <button ref={btnCallRef} className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border bg-white/70 text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
+                <button className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border bg-white/70 text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
                   <Icon name="Phone" size={15} className="text-sage" />
                   Позвонить
                 </button>
@@ -292,10 +278,9 @@ export default function Index() {
             </div>
 
             {/* Right: Pump */}
-            <div ref={rightColRef} className="relative" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
+            <div className="relative" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
 
-              {/* Иллюстрация — смещена левее и выше */}
               <img src={HERO_IMAGE} alt="Промышленный насос"
                 className="animate-float-pump relative z-10 w-full max-w-[650px] object-contain"
                 style={{
@@ -305,43 +290,36 @@ export default function Index() {
                 }}
               />
 
-              {/* ПРОИЗВОДИТЕЛЬНОСТЬ — сверху справа */}
-              <div className="absolute top-0 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
-                    <Icon name="Gauge" size={20} className="text-sage" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Производительность</div>
-                    <div className="text-xl font-light text-foreground mt-0.5">до 5000 м³/ч</div>
-                  </div>
+              {/* ПРОИЗВОДИТЕЛЬНОСТЬ — правый верхний угол */}
+              <div className="absolute top-[8%] right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl shadow-md z-20 flex items-center gap-2.5 px-4 py-3" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
+                <div className="w-8 h-8 rounded-lg bg-sage-pale flex items-center justify-center flex-shrink-0">
+                  <Icon name="Gauge" size={16} className="text-sage" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-wide leading-none mb-1">Производительность</div>
+                  <div className="text-base font-light text-foreground leading-none">до 5000 м³/ч</div>
                 </div>
               </div>
 
-              {/* ГАРАНТИЯ — нижняя грань на уровне кнопки Позвонить */}
-              <div className="absolute left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20"
-                style={{ bottom: badgeBottom !== undefined ? `${badgeBottom}px` : "130px", animation: "fadeUp 0.6s ease 0.7s both" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center">
-                    <Icon name="ShieldCheck" size={20} className="text-sage" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Гарантия</div>
-                    <div className="text-xl font-light text-foreground">36 месяцев</div>
-                  </div>
+              {/* ГАРАНТИЯ — левый, посередине по высоте */}
+              <div className="absolute left-[5%] top-[52%] bg-white/92 backdrop-blur-sm border border-border rounded-2xl shadow-md z-20 flex items-center gap-2.5 px-4 py-3" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
+                <div className="w-8 h-8 rounded-lg bg-sage-pale flex items-center justify-center flex-shrink-0">
+                  <Icon name="ShieldCheck" size={16} className="text-sage" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-wide leading-none mb-1">Гарантия</div>
+                  <div className="text-base font-light text-foreground leading-none">36 месяцев</div>
                 </div>
               </div>
 
-              <div className="absolute right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20"
-                style={{ bottom: badgeBottom !== undefined ? `${badgeBottom}px` : "130px", animation: "fadeUp 0.6s ease 0.75s both" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
-                    <Icon name="ArrowUp" size={20} className="text-sage" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Напор</div>
-                    <div className="text-xl font-light text-foreground mt-0.5">до 1200 м</div>
-                  </div>
+              {/* НАПОР — правый, посередине по высоте (одна линия с ГАРАНТИЯ) */}
+              <div className="absolute right-0 top-[52%] bg-white/92 backdrop-blur-sm border border-border rounded-2xl shadow-md z-20 flex items-center gap-2.5 px-4 py-3" style={{ animation: "fadeUp 0.6s ease 0.75s both" }}>
+                <div className="w-8 h-8 rounded-lg bg-sage-pale flex items-center justify-center flex-shrink-0">
+                  <Icon name="ArrowUp" size={16} className="text-sage" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-wide leading-none mb-1">Напор</div>
+                  <div className="text-base font-light text-foreground leading-none">до 1200 м</div>
                 </div>
               </div>
             </div>
