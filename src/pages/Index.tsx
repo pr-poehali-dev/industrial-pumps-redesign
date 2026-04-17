@@ -150,7 +150,7 @@ export default function Index() {
               <Icon name="Waves" size={14} className="text-white" />
             </div>
             <span className="text-sm tracking-tight text-foreground font-semibold">
-              МЗ<span className="text-sage font-black"> ПОТОК</span>
+              ИН<span className="text-sage font-black">АГРОТЕХ</span>
             </span>
           </a>
 
@@ -574,7 +574,7 @@ export default function Index() {
                 <div className="w-7 h-7 rounded-lg bg-sage flex items-center justify-center">
                   <Icon name="Waves" size={14} className="text-white" />
                 </div>
-                <span className="text-sm tracking-tight font-semibold">МЗ<span className="text-sage font-black"> ПОТОК</span></span>
+                <span className="text-sm tracking-tight font-semibold">ИН<span className="text-sage font-black">АГРОТЕХ</span></span>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Промышленные насосы и насосные станции. Поставка, монтаж, обслуживание с 2004 года.
@@ -598,7 +598,7 @@ export default function Index() {
             ))}
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-border gap-4">
-            <p className="text-xs text-muted-foreground">© 2024 МЗ Поток. Все права защищены.</p>
+            <p className="text-xs text-muted-foreground">© 2024 Инагротех. Все права защищены.</p>
             <div className="flex items-center gap-6">
               <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Политика конфиденциальности</a>
               <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Договор оферты</a>
