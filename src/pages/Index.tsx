@@ -230,7 +230,7 @@ export default function Index() {
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-4 pb-4 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
 
             {/* Left */}
             <div className="space-y-8">
@@ -275,16 +275,21 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Right: Pump — иллюстрация +30% (max-w-[650px]) */}
-            <div className="relative flex items-center justify-center" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
-              <div className="absolute w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
+            {/* Right: Pump */}
+            <div className="relative" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
 
+              {/* Иллюстрация — смещена левее и выше */}
               <img src={HERO_IMAGE} alt="Промышленный насос"
                 className="animate-float-pump relative z-10 w-full max-w-[650px] object-contain"
-                style={{ filter: "drop-shadow(0 30px 60px rgba(74, 112, 74, 0.22))" }}
+                style={{
+                  filter: "drop-shadow(0 30px 60px rgba(74, 112, 74, 0.22))",
+                  marginLeft: "-6%",
+                  marginTop: "-5%",
+                }}
               />
 
-              {/* ПРОИЗВОДИТЕЛЬНОСТЬ — выровнена по верху заголовка (сверху) */}
+              {/* ПРОИЗВОДИТЕЛЬНОСТЬ — сверху справа */}
               <div className="absolute top-0 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
@@ -297,8 +302,9 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* ГАРАНТИЯ — внизу, на одной высоте с кнопкой Позвонить */}
-              <div className="absolute bottom-0 left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
+              {/* ГАРАНТИЯ — нижняя грань на уровне кнопки Позвонить */}
+              <div className="absolute left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20"
+                style={{ bottom: "130px", animation: "fadeUp 0.6s ease 0.7s both" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center">
                     <Icon name="ShieldCheck" size={20} className="text-sage" />
@@ -310,8 +316,8 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* НАПОР — внизу справа, на той же высоте что и ГАРАНТИЯ */}
-              <div className="absolute bottom-0 right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.75s both" }}>
+              <div className="absolute right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20"
+                style={{ bottom: "130px", animation: "fadeUp 0.6s ease 0.75s both" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
                     <Icon name="ArrowUp" size={20} className="text-sage" />
