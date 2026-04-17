@@ -284,8 +284,8 @@ export default function Index() {
                 className="animate-float-pump relative z-10 w-full max-w-[650px] object-contain"
                 style={{
                   filter: "drop-shadow(0 30px 60px rgba(74, 112, 74, 0.22))",
-                  marginLeft: "-6%",
-                  marginTop: "-5%",
+                  marginLeft: "-10%",
+                  marginTop: "5%",
                 }}
               />
 
