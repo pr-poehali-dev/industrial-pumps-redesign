@@ -517,159 +517,195 @@ export default function Index() {
 
           <div className="cat-grid">
 
-            {/* 01 Насосные станции — 3×2 ТЁМНО-ЗЕЛЁНАЯ */}
+            {/* ── ROW 1-2 ─────────────────────────────────────────── */}
+            {/* 01 Насосные станции — col 1-3, row 1-2 — ЗЕЛЁНАЯ */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-3 row-span-2"
               style={{ background: "linear-gradient(135deg, hsl(148 28% 17%), hsl(148 24% 26%))" }}>
-              <div className="absolute top-5 left-5 text-[11px] font-medium text-white/40 uppercase tracking-widest select-none">01</div>
+              <div className="absolute top-5 left-5 text-[11px] font-medium text-white/35 uppercase tracking-widest select-none">01</div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="font-light text-white text-xl leading-tight mb-1.5">Насосные станции</h3>
+                <h3 className="font-light text-white text-[18px] leading-tight mb-1.5">Насосные станции</h3>
                 <p className="text-xs text-white/55">Блочно-модульное исполнение под ключ</p>
               </div>
-              <div className="cat-arrow absolute bottom-5 right-5 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={14} className="text-white" />
+              <div className="cat-arrow absolute bottom-5 right-5 w-9 h-9 rounded-full border border-white/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={15} className="text-white" />
               </div>
             </a>
 
-            {/* 02 Насосы для орошения — 2×1 */}
+            {/* 02 Насосы для орошения — col 4-5, row 1 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">02</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Насосы для орошения и полива</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Насосы для орошения и полива</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 03 Насосы для загрязнённой воды — 1×1 */}
-            <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-1 row-span-1"
-              style={{ background: "hsl(var(--grey-pale))" }}>
-              <div className="absolute top-3 left-3 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">03</div>
-              <div className="absolute bottom-0 left-0 right-0 p-3">
-                <h3 className="font-medium text-foreground text-xs leading-tight">Насосы для загрязнённой воды</h3>
+            {/* Оранжевая инфографика — col 6, row 1 */}
+            <div className="cat-item relative rounded-2xl overflow-hidden col-span-1 row-span-1 flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg, hsl(32 95% 55%), hsl(28 90% 48%))" }}>
+              <div className="text-center px-2">
+                <div className="text-2xl font-light text-white leading-none">8000+</div>
+                <div className="text-[9px] text-white/75 mt-1 uppercase tracking-wide">позиций</div>
               </div>
-              <div className="cat-arrow absolute bottom-3 right-3 w-6 h-6 rounded-full border border-sage/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={10} className="text-sage" />
+            </div>
+
+            {/* 03 Насосы для загрязнённой воды — col 4-5, row 2 */}
+            <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">03</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Насосы для загрязнённой воды</h3>
+              </div>
+              <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 04 Погружные насосы — 2×2 ТЁМНО-ЗЕЛЁНАЯ */}
+            {/* Оранжевая инфографика — col 6, row 2 */}
+            <div className="cat-item relative rounded-2xl overflow-hidden col-span-1 row-span-1 flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg, hsl(32 95% 55%), hsl(28 90% 48%))" }}>
+              <div className="text-center px-2">
+                <div className="text-2xl font-light text-white leading-none">20+</div>
+                <div className="text-[9px] text-white/75 mt-1 uppercase tracking-wide">лет</div>
+              </div>
+            </div>
+
+            {/* ── ROW 3-4 ─────────────────────────────────────────── */}
+            {/* 04 Погружные насосы — col 1-2, row 3-4 — ЗЕЛЁНАЯ */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-2"
               style={{ background: "linear-gradient(135deg, hsl(148 28% 17%), hsl(148 24% 26%))" }}>
-              <div className="absolute top-5 left-5 text-[11px] font-medium text-white/40 uppercase tracking-widest select-none">04</div>
+              <div className="absolute top-5 left-5 text-[11px] font-medium text-white/35 uppercase tracking-widest select-none">04</div>
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h3 className="font-light text-white text-base leading-tight mb-1">Погружные насосы и миксеры</h3>
+                <h3 className="font-light text-white text-[18px] leading-tight mb-1">Погружные насосы и миксеры</h3>
                 <p className="text-xs text-white/55">IP68, до 500 м глубины</p>
               </div>
-              <div className="cat-arrow absolute bottom-5 right-5 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={14} className="text-white" />
+              <div className="cat-arrow absolute bottom-5 right-5 w-9 h-9 rounded-full border border-white/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={15} className="text-white" />
               </div>
             </a>
 
-            {/* 05 Системы управления — 2×1 */}
+            {/* 05 Системы управления — col 3-4, row 3 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">05</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Системы управления</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Системы управления</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 06 Аналоги МЗ ПОТОК — 2×1 */}
+            {/* 06 Аналоги МЗ ПОТОК — col 5-6, row 3 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">06</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Аналоги насосов МЗ ПОТОК</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Аналоги насосов МЗ ПОТОК</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 07 Мобильные транспортировщики — 3×1 ТЁМНО-ЗЕЛЁНАЯ */}
+            {/* 07 Мобильные транспортировщики — col 3-5, row 4 — СВЕТЛО-СЕРАЯ */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-3 row-span-1"
-              style={{ background: "linear-gradient(135deg, hsl(148 28% 17%), hsl(148 24% 26%))" }}>
-              <div className="absolute top-4 left-4 text-[11px] font-medium text-white/40 uppercase tracking-widest select-none">07</div>
+              style={{ background: "hsl(215 12% 93%)" }}>
+              <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">07</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-light text-white text-sm leading-tight">Мобильные транспортировщики</h3>
-                <p className="text-xs text-white/55">Дизельные и электро</p>
-              </div>
-              <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-white/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={12} className="text-white" />
-              </div>
-            </a>
-
-            {/* 08 Армированные шланги — 2×1 */}
-            <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
-              style={{ background: "hsl(var(--grey-pale))" }}>
-              <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">08</div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Армированные шланги NBR/TPU/ПНД</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Мобильные транспортировщики</h3>
+                <p className="text-[11px] text-muted-foreground mt-0.5">Дизельные и электро</p>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 09 Перемешивание — 1×1 */}
+            {/* ── ROW 5 ───────────────────────────────────────────── */}
+            {/* 08 Армированные шланги — col 1-2, row 5 — ЗЕЛЁНАЯ */}
+            <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
+              style={{ background: "linear-gradient(135deg, hsl(148 28% 17%), hsl(148 24% 26%))" }}>
+              <div className="absolute top-4 left-4 text-[11px] font-medium text-white/35 uppercase tracking-widest select-none">08</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-light text-white text-[18px] leading-tight">Армированные шланги</h3>
+              </div>
+              <div className="cat-arrow absolute bottom-4 right-4 w-9 h-9 rounded-full border border-white/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={15} className="text-white" />
+              </div>
+            </a>
+
+            {/* 09 Перемешивание — col 3, row 5 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-1 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-3 left-3 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">09</div>
               <div className="absolute bottom-0 left-0 right-0 p-3">
-                <h3 className="font-medium text-foreground text-xs leading-tight">Перемешивание / аэрирование</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Аэрирование</h3>
               </div>
-              <div className="cat-arrow absolute bottom-3 right-3 w-6 h-6 rounded-full border border-sage/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={10} className="text-sage" />
+              <div className="cat-arrow absolute bottom-3 right-3 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 10 Расходомеры — 1×1 */}
+            {/* 10 Расходомеры — col 4, row 5 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-1 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-3 left-3 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">10</div>
               <div className="absolute bottom-0 left-0 right-0 p-3">
-                <h3 className="font-medium text-foreground text-xs leading-tight">Расходомеры</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Расходомеры</h3>
               </div>
-              <div className="cat-arrow absolute bottom-3 right-3 w-6 h-6 rounded-full border border-sage/30 flex items-center justify-center">
-                <Icon name="ArrowUpRight" size={10} className="text-sage" />
+              <div className="cat-arrow absolute bottom-3 right-3 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 11 Компрессоры — 2×1 */}
+            {/* Оранжевая инфографика — col 5-6, row 5 */}
+            <div className="cat-item relative rounded-2xl overflow-hidden col-span-2 row-span-1 flex items-center justify-center gap-8 px-6"
+              style={{ background: "linear-gradient(135deg, hsl(32 95% 55%), hsl(28 90% 48%))" }}>
+              <div className="text-center">
+                <div className="text-2xl font-light text-white leading-none">500+</div>
+                <div className="text-[9px] text-white/75 mt-1 uppercase tracking-wide">клиентов</div>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center">
+                <div className="text-2xl font-light text-white leading-none">48ч</div>
+                <div className="text-[9px] text-white/75 mt-1 uppercase tracking-wide">доставка</div>
+              </div>
+            </div>
+
+            {/* ── ROW 6 ───────────────────────────────────────────── */}
+            {/* 11 Компрессоры — col 1-2, row 6 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(215 12% 93%)" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">11</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Компрессоры</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Компрессоры</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 12 Запасные части — 2×1 */}
+            {/* 12 Запасные части — col 3-4, row 6 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">12</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Запасные части и комплектующие</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Запасные части и комплектующие</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 13 Оборудование для внесения — 2×1 */}
+            {/* 13 Оборудование для внесения — col 5-6, row 6 */}
             <a href="#" className="cat-item relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 text-[11px] font-medium text-muted-foreground/40 uppercase tracking-widest select-none">13</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Оборудование для внесения удобрений</h3>
+                <h3 className="font-medium text-foreground text-[13px] leading-tight">Оборудование для внесения удобрений</h3>
               </div>
               <div className="cat-arrow absolute bottom-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
