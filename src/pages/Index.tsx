@@ -362,7 +362,7 @@ export default function Index() {
                   {/* Big number */}
                   <div className={`absolute select-none font-thin transition-all duration-500 ${
                     isActive
-                      ? "top-7 left-7 text-white/10 text-[120px] leading-none"
+                      ? "top-3 left-6 text-white/10 text-[120px] leading-none"
                       : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl text-muted-foreground/20"
                   }`}>
                     {cat.num}
@@ -379,9 +379,9 @@ export default function Index() {
                   {isActive && (
                     <div className="absolute inset-0 flex" key={`active-${i}`}>
                       {/* Left content */}
-                      <div className="flex-1 p-7 flex flex-col justify-between">
+                      <div className="flex-1 px-7 pt-5 pb-6 flex flex-col justify-between">
                         <div>
-                          <h3 className="text-[25px] font-light text-white mb-3 mt-6 leading-snug" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
+                          <h3 className="text-[25px] font-light text-white mb-2 mt-0 leading-snug" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
                             {cat.title}
                           </h3>
                           <p className="text-sm text-white/65 leading-relaxed max-w-xs" style={{ animation: "fadeUp 0.45s ease 0.2s both" }}>
@@ -389,7 +389,7 @@ export default function Index() {
                           </p>
                         </div>
                         <div className="flex items-end justify-between" style={{ animation: "fadeUp 0.45s ease 0.3s both" }}>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 mr-auto">
                             {cat.specs.map((spec, si) => (
                               <span key={si} className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-white/12 text-white font-medium backdrop-blur-sm">
                                 <Icon name="Check" size={11} className="text-white/80" />
