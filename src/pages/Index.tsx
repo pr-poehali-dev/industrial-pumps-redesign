@@ -170,7 +170,7 @@ export default function Index() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#f4f5f6]/97 backdrop-blur-md shadow-[0_1px_0_0_hsl(var(--border))]" : "bg-[#f4f5f6]/95 backdrop-blur-sm"}`}>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center">
-            <img src={LOGO_URL} alt="Инагротех" className="h-9 w-auto object-contain" />
+            <img src={LOGO_URL} alt="Инагротех" className="h-[26px] w-auto object-contain" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -214,7 +214,7 @@ export default function Index() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ paddingTop: "64px" }}>
+      <section className="relative flex items-center overflow-hidden" style={{ paddingTop: "64px", minHeight: "calc(100vh - 0px)" }}>
         <div className="absolute inset-0">
           <img src={BG_GRADIENT} alt="" className="w-full h-full object-cover" />
         </div>
@@ -229,7 +229,7 @@ export default function Index() {
           ))}
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-8 pb-12 w-full">
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-4 pb-4 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left */}
@@ -253,12 +253,12 @@ export default function Index() {
                 Поставка, монтаж и обслуживание насосного оборудования для промышленности, ЖКХ и строительства. Более 8 000 позиций в наличии.
               </p>
 
-              <div className="flex flex-wrap gap-4" style={{ animation: "fadeUp 0.7s ease 0.4s both" }}>
+              <div id="hero-buttons" className="flex flex-wrap gap-4" style={{ animation: "fadeUp 0.7s ease 0.4s both" }}>
                 <button className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-sage text-white font-semibold text-sm hover:bg-sage-dark transition-all duration-200 shadow-[0_4px_20px_hsl(148_28%_32%_/_0.28)] hover:-translate-y-0.5">
                   Получить консультацию
                   <Icon name="ArrowRight" size={16} />
                 </button>
-                <button className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border bg-white/70 text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
+                <button id="btn-call" className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border bg-white/70 text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
                   <Icon name="Phone" size={15} className="text-sage" />
                   Позвонить
                 </button>
@@ -275,21 +275,30 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Right: Pump */}
+            {/* Right: Pump — иллюстрация +30% (max-w-[650px]) */}
             <div className="relative flex items-center justify-center" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
-              <div className="absolute w-72 h-72 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
+              <div className="absolute w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
 
               <img src={HERO_IMAGE} alt="Промышленный насос"
-                className="animate-float-pump relative z-10 w-full max-w-[500px] object-contain"
+                className="animate-float-pump relative z-10 w-full max-w-[650px] object-contain"
                 style={{ filter: "drop-shadow(0 30px 60px rgba(74, 112, 74, 0.22))" }}
               />
 
-              <div className="absolute top-8 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
-                <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Производительность</div>
-                <div className="text-2xl font-light text-foreground mt-0.5">до 5000 м³/ч</div>
+              {/* ПРОИЗВОДИТЕЛЬНОСТЬ — выровнена по верху заголовка (сверху) */}
+              <div className="absolute top-0 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
+                    <Icon name="Gauge" size={20} className="text-sage" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Производительность</div>
+                    <div className="text-xl font-light text-foreground mt-0.5">до 5000 м³/ч</div>
+                  </div>
+                </div>
               </div>
 
-              <div className="absolute bottom-12 left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
+              {/* ГАРАНТИЯ — внизу, на одной высоте с кнопкой Позвонить */}
+              <div className="absolute bottom-0 left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center">
                     <Icon name="ShieldCheck" size={20} className="text-sage" />
@@ -301,19 +310,27 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="absolute bottom-32 right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.75s both" }}>
-                <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Напор</div>
-                <div className="text-2xl font-light text-foreground mt-0.5">до 1200 м</div>
+              {/* НАПОР — внизу справа, на той же высоте что и ГАРАНТИЯ */}
+              <div className="absolute bottom-0 right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.75s both" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center flex-shrink-0">
+                    <Icon name="ArrowUp" size={20} className="text-sage" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Напор</div>
+                    <div className="text-xl font-light text-foreground mt-0.5">до 1200 м</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
 
       {/* ===== SLIDER / CATEGORIES ===== */}
-      <section id="slider" className="pt-12 pb-20 bg-white">
+      <section id="slider" className="pt-6 pb-16 bg-white">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -345,7 +362,7 @@ export default function Index() {
                   {/* Big number */}
                   <div className={`absolute select-none font-thin transition-all duration-500 ${
                     isActive
-                      ? "top-6 left-6 text-white/10 text-[120px] leading-none"
+                      ? "top-7 left-7 text-white/10 text-[120px] leading-none"
                       : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl text-muted-foreground/20"
                   }`}>
                     {cat.num}
@@ -364,7 +381,7 @@ export default function Index() {
                       {/* Left content */}
                       <div className="flex-1 p-7 flex flex-col justify-between">
                         <div>
-                          <h3 className="text-xl font-light text-white mb-3 mt-6" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
+                          <h3 className="text-[25px] font-light text-white mb-3 mt-6 leading-snug" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
                             {cat.title}
                           </h3>
                           <p className="text-sm text-white/65 leading-relaxed max-w-xs" style={{ animation: "fadeUp 0.45s ease 0.2s both" }}>
@@ -374,21 +391,22 @@ export default function Index() {
                         <div className="flex items-end justify-between" style={{ animation: "fadeUp 0.45s ease 0.3s both" }}>
                           <div className="flex flex-wrap gap-2">
                             {cat.specs.map((spec, si) => (
-                              <span key={si} className="text-xs px-3 py-1.5 rounded-full bg-white/12 text-white font-medium backdrop-blur-sm">
+                              <span key={si} className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-white/12 text-white font-medium backdrop-blur-sm">
+                                <Icon name="Check" size={11} className="text-white/80" />
                                 {spec}
                               </span>
                             ))}
                           </div>
-                          <div className="w-10 h-10 rounded-xl bg-white/12 flex items-center justify-center flex-shrink-0 ml-3">
+                          {/* Круглая кнопка со стрелкой */}
+                          <div className="w-11 h-11 rounded-full border-2 border-white/30 flex items-center justify-center flex-shrink-0 ml-3 hover:border-white/60 transition-colors duration-200">
                             <Icon name="ArrowRight" size={18} className="text-white" />
                           </div>
                         </div>
                       </div>
-                      {/* Right image */}
+                      {/* Right image — без градиента */}
                       <div className="w-48 lg:w-64 flex items-end justify-center pb-0 relative overflow-hidden" style={{ animation: "fadeIn 0.5s ease 0.2s both" }}>
                         <img src={cat.img} alt={cat.title}
-                          className="w-full h-full object-cover object-left opacity-70"
-                          style={{ maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.6) 30%, black 60%)" }}
+                          className="w-full h-full object-cover object-left opacity-60"
                         />
                       </div>
                     </div>
@@ -488,191 +506,204 @@ export default function Index() {
             </h2>
           </div>
 
-          {/* Masonry-style grid */}
-          <div className="grid grid-cols-4 gap-3" style={{ gridAutoRows: "140px" }}>
-            {/* 1: Насосные станции — big 2x2 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-2"
+          {/* Masonry grid — 6 cols, разные размеры, без фото */}
+          <div className="grid grid-cols-6 gap-3" style={{ gridAutoRows: "130px" }}>
+
+            {/* ROW 1–2: Насосные станции — 3×2 (большая) */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-3 row-span-2"
               style={{ background: "linear-gradient(135deg, hsl(148 28% 19%), hsl(148 26% 29%))" }}>
-              <img src={IMG_PUMP_STATION} alt="Насосные станции" className="absolute inset-0 w-full h-full object-cover opacity-25" />
               <div className="absolute top-5 left-5 w-11 h-11 rounded-xl flex items-center justify-center bg-white/15">
-                <Icon name="Building2" size={20} className="text-white" fallback="Waves" />
+                <Icon name="Building2" size={22} className="text-white" fallback="Waves" />
               </div>
-              <div className="absolute top-4 right-5 text-6xl font-thin text-white/10 select-none leading-none">01</div>
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h3 className="font-light text-white text-lg leading-tight mb-1">Насосные станции</h3>
+              <div className="absolute top-4 right-6 text-[80px] font-thin text-white/8 select-none leading-none">01</div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="font-light text-white text-xl leading-tight mb-1.5">Насосные станции</h3>
                 <p className="text-xs text-white/55">Блочно-модульное исполнение под ключ</p>
               </div>
-              <div className="absolute top-5 right-5 w-8 h-8 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white/18">
+              <div className="absolute top-5 right-5 w-8 h-8 rounded-full border border-white/25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
                 <Icon name="ArrowUpRight" size={14} className="text-white" />
               </div>
             </a>
 
-            {/* 2: Насосы для орошения — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+            {/* ROW 1: Насосы для орошения — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Sprout" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">02</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">02</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Насосы для орошения и полива</h3>
               </div>
-              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
-                <Icon name="ArrowUpRight" size={12} className="text-sage" />
-              </div>
             </a>
 
-            {/* 3: Насосы для грязной воды — 1x1 */}
+            {/* ROW 1: Оранжевая акцентная — 1×1 */}
+            <div className="cat-card relative rounded-2xl overflow-hidden col-span-1 row-span-1 flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg, hsl(32 95% 55%), hsl(28 90% 48%))" }}>
+              <div className="text-center px-3">
+                <div className="text-2xl font-light text-white leading-none">8000+</div>
+                <div className="text-[10px] text-white/75 mt-1 uppercase tracking-wide">позиций</div>
+              </div>
+            </div>
+
+            {/* ROW 2: Насосы для загрязнённой воды — 1×1 */}
             <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Droplets" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">03</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Насосы для загрязнённой воды</h3>
-              </div>
-              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
-                <Icon name="ArrowUpRight" size={12} className="text-sage" />
+                <h3 className="font-medium text-foreground text-xs leading-tight">Насосы для загрязнённой воды</h3>
               </div>
             </a>
 
-            {/* 4: Погружные насосы — 1x2 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-2"
-              style={{ background: "hsl(220 18% 96%)" }}>
-              <img src={IMG_SUBMERSIBLE} alt="Погружные насосы" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+            {/* ROW 2: Серая пустая — 1×1 (акцент декор) */}
+            <div className="cat-card relative rounded-2xl overflow-hidden col-span-1 row-span-1 flex items-center justify-center"
+              style={{ background: "hsl(210 8% 90%)" }}>
+              <Icon name="Package" size={28} className="text-muted-foreground/30" fallback="Box" />
+            </div>
+
+            {/* ROW 3–4: Погружные насосы — 2×2 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-2"
+              style={{ background: "hsl(220 14% 95%)" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="ArrowDown" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-4xl font-thin text-muted-foreground/20 select-none leading-none">04</div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight mb-1">Погружные насосы и миксеры</h3>
-                <p className="text-xs text-muted-foreground">IP68, до 500 м</p>
+              <div className="absolute top-3 right-4 text-5xl font-thin text-muted-foreground/15 select-none leading-none">04</div>
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-medium text-foreground text-base leading-tight mb-1">Погружные насосы и миксеры</h3>
+                <p className="text-xs text-muted-foreground">IP68, до 500 м глубины</p>
               </div>
-              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 5: Системы управления — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+            {/* ROW 3: Системы управления — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Cpu" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">05</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">05</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Системы управления</h3>
               </div>
             </a>
 
-            {/* 6: Аналоги МЗ ПОТОК — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+            {/* ROW 3: Аналоги МЗ ПОТОК — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Repeat2" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">06</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">06</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Аналоги насосов МЗ ПОТОК</h3>
               </div>
             </a>
 
-            {/* 7: Мобильные транспортировщики — 2x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
-              style={{ background: "hsl(220 14% 94%)" }}>
-              <img src={IMG_MOBILE} alt="Мобильные транспортировщики" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+            {/* ROW 4: Мобильные транспортировщики — 3×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-3 row-span-1"
+              style={{ background: "hsl(215 12% 93%)" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Truck" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-4xl font-thin text-muted-foreground/20 select-none leading-none">07</div>
+              <div className="absolute top-3 right-4 text-4xl font-thin text-muted-foreground/15 select-none leading-none">07</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Мобильные транспортировщики</h3>
                 <p className="text-xs text-muted-foreground">Дизельные и электро</p>
               </div>
-              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-full border border-sage/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
                 <Icon name="ArrowUpRight" size={12} className="text-sage" />
               </div>
             </a>
 
-            {/* 8: Армированные шланги — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+            {/* ROW 4: Оранжевая — 1×1 (цифра) */}
+            <div className="cat-card relative rounded-2xl overflow-hidden col-span-1 row-span-1 flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg, hsl(32 95% 55%), hsl(28 90% 48%))" }}>
+              <div className="text-center">
+                <div className="text-2xl font-light text-white leading-none">20+</div>
+                <div className="text-[10px] text-white/75 mt-1 uppercase tracking-wide">лет</div>
+              </div>
+            </div>
+
+            {/* ROW 5: Армированные шланги — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Cable" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">08</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">08</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Армированные шланги NBR/TPU/ПНД</h3>
               </div>
             </a>
 
-            {/* 9: Перемешивание — 1x1 */}
+            {/* ROW 5: Перемешивание — 1×1 */}
             <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
-              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
-                <Icon name="Wind" size={16} className="text-sage" fallback="Waves" />
+              <div className="absolute top-4 left-4 w-8 h-8 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Wind" size={14} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">09</div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Перемешивание / аэрирование</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <h3 className="font-medium text-foreground text-xs leading-tight">Перемешивание / аэрирование</h3>
               </div>
             </a>
 
-            {/* 10: Оборудование для внесения — 1x1 */}
+            {/* ROW 5: Оборудование для внесения — 1×1 */}
             <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
-              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
-                <Icon name="Leaf" size={16} className="text-sage" fallback="Waves" />
+              <div className="absolute top-4 left-4 w-8 h-8 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Leaf" size={14} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">10</div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Оборудование для внесения</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <h3 className="font-medium text-foreground text-xs leading-tight">Оборудование для внесения</h3>
               </div>
             </a>
 
-            {/* 11: Расходомеры — 1x1 */}
+            {/* ROW 5: Расходомеры — 1×1 */}
             <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
               style={{ background: "hsl(var(--sage-pale))" }}>
-              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
-                <Icon name="Gauge" size={16} className="text-sage" fallback="Waves" />
+              <div className="absolute top-4 left-4 w-8 h-8 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Gauge" size={14} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">11</div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-medium text-foreground text-sm leading-tight">Расходомеры</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <h3 className="font-medium text-foreground text-xs leading-tight">Расходомеры</h3>
               </div>
             </a>
 
-            {/* 12: Компрессоры — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
-              style={{ background: "hsl(var(--grey-pale))" }}>
+            {/* ROW 6: Компрессоры — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
+              style={{ background: "hsl(215 12% 93%)" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Zap" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">12</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">12</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Компрессоры</h3>
               </div>
             </a>
 
-            {/* 13: Запасные части — 1x1 */}
-            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+            {/* ROW 6: Запасные части — 2×1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
               style={{ background: "hsl(var(--grey-pale))" }}>
               <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
                 <Icon name="Wrench" size={16} className="text-sage" fallback="Waves" />
               </div>
-              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">13</div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/15 select-none leading-none">13</div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-medium text-foreground text-sm leading-tight">Запасные части</h3>
               </div>
             </a>
-          </div>
 
-          <div className="mt-8 flex justify-center">
-            <button className="flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-sm font-medium text-foreground hover:bg-sage-pale hover:border-sage-light transition-all duration-200">
-              Посмотреть весь каталог
-              <Icon name="ChevronRight" size={16} />
-            </button>
+            {/* ROW 6: Серая декоративная — 2×1 */}
+            <div className="cat-card relative rounded-2xl overflow-hidden col-span-2 row-span-1 flex items-center justify-center gap-3"
+              style={{ background: "hsl(210 8% 90%)" }}>
+              <Icon name="ArrowRight" size={18} className="text-muted-foreground/40" />
+              <span className="text-xs text-muted-foreground/50 font-medium uppercase tracking-wider">Смотреть все</span>
+            </div>
+
           </div>
         </div>
       </section>
