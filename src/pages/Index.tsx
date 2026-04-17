@@ -1,8 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMAGE = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/5e097ff1-9949-4445-b2f8-5cdcd848aa38.jpg";
+const LOGO_URL = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/bucket/c8dca91b-8f8c-45dd-bc71-71706cb0bbd4.png";
+const HERO_IMAGE = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/bucket/4ffb3959-1cb9-4720-ba46-6f50fe124c8f.png";
+const BG_GRADIENT = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/bucket/d6b90de7-e167-4c77-aef6-53d6df911c0b.jpg";
 const COMPANY_IMAGE = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/5db050f5-ef26-4ceb-a365-572292c6e73f.jpg";
+
+const IMG_PUMP_STATION = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/98c1c8e4-c3d7-4438-b21d-0a2bca989108.jpg";
+const IMG_SUBMERSIBLE = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/a0ca4b12-40ac-413b-aeb3-2794d0bc4c27.jpg";
+const IMG_IRRIGATION = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/45d74b3f-fdfe-44d8-8b3a-174447811988.jpg";
+const IMG_DIRTY_WATER = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/c4cf942a-b218-4dfd-8713-e841b0c218f1.jpg";
+const IMG_CONTROL = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/6f26903b-f2e1-4c97-b781-9aa7da5c5299.jpg";
+const IMG_MOBILE = "https://cdn.poehali.dev/projects/d0648e87-78b5-4465-bee9-33cf21539017/files/174c0ecc-c7bf-4202-90ad-9b19f67b33a5.jpg";
 
 const NAV_LINKS = [
   { label: "Категории", href: "#categories" },
@@ -11,71 +20,80 @@ const NAV_LINKS = [
   { label: "Контакты", href: "#contacts" },
 ];
 
-const ALL_SECTIONS = [
-  { title: "Центробежные насосы", href: "#" },
-  { title: "Погружные насосы", href: "#" },
-  { title: "Насосные станции", href: "#" },
-  { title: "Дренажные насосы", href: "#" },
-  { title: "Скважинные насосы", href: "#" },
-  { title: "Химические насосы", href: "#" },
-  { title: "Насосы для нефтепродуктов", href: "#" },
-  { title: "Запорная арматура", href: "#" },
-  { title: "КИП и автоматика", href: "#" },
-  { title: "Фильтрационное оборудование", href: "#" },
-  { title: "Запасные части", href: "#" },
-  { title: "Сервис и обслуживание", href: "#" },
+const CATALOG_LIST = [
+  "Насосные станции",
+  "Насосы для орошения и полива",
+  "Насосы для загрязненной и грязной воды",
+  "Погружные насосы и миксеры",
+  "Системы управления погружным оборудованием",
+  "Аналоги насосов МЗ ПОТОК",
+  "Армированные шланги NBR/TPU/водопроводы ПНД",
+  "Мобильные транспортировщики",
+  "Перемешивание/аэрирование",
+  "Оборудование для внесения",
+  "Расходомеры",
+  "Компрессоры",
+  "Запасные части",
 ];
 
 const SLIDER_CATEGORIES = [
   {
     num: "01",
-    title: "Центробежные насосы",
-    desc: "Горизонтальные и вертикальные центробежные насосы для перекачки воды, технологических жидкостей, суспензий. Производительность до 5000 м³/ч, напор до 1200 м.",
-    specs: ["До 5000 м³/ч", "Напор до 1200 м", "КПД до 92%"],
-  },
-  {
-    num: "02",
     title: "Насосные станции",
     desc: "Комплектные насосные станции заводской готовности. Блочно-модульное исполнение, автоматизированное управление, монтаж под ключ.",
     specs: ["Блочно-модульные", "Автоматизация", "Монтаж под ключ"],
+    img: IMG_PUMP_STATION,
+  },
+  {
+    num: "02",
+    title: "Насосы для орошения и полива",
+    desc: "Специализированные насосы для сельскохозяйственного орошения и полива. Высокая надёжность, экономичность, работа с удобрениями.",
+    specs: ["Сельское хозяйство", "Экономия воды", "pH-стойкость"],
+    img: IMG_IRRIGATION,
   },
   {
     num: "03",
-    title: "Погружные насосы",
-    desc: "Погружные агрегаты для водоснабжения, дренажа и канализации. Работа в агрессивных средах, защита класса IP68.",
-    specs: ["IP68 защита", "Агрессивные среды", "Глубина до 500 м"],
+    title: "Насосы для загрязнённой воды",
+    desc: "Насосы для перекачки загрязнённых и грязных вод, дренажа котлованов и строительных объектов. Твёрдые включения до 50 мм.",
+    specs: ["Включения до 50 мм", "Строительство", "Дренаж"],
+    img: IMG_DIRTY_WATER,
   },
   {
     num: "04",
-    title: "Запорная арматура",
-    desc: "Задвижки, затворы, клапаны и краны для промышленных трубопроводов. Давление до 400 бар, диаметры DN15-DN2000.",
-    specs: ["До 400 бар", "DN15–DN2000", "Все материалы"],
+    title: "Погружные насосы и миксеры",
+    desc: "Погружные агрегаты для водоснабжения, канализации и перемешивания. Работа в агрессивных средах, защита класса IP68.",
+    specs: ["IP68 защита", "Агрессивные среды", "Глубина до 500 м"],
+    img: IMG_SUBMERSIBLE,
   },
   {
     num: "05",
-    title: "Дренажные насосы",
-    desc: "Насосы для откачки загрязнённых вод, дренажа строительных котлованов и подвальных помещений. Твёрдые включения до 50 мм.",
-    specs: ["Включения до 50 мм", "Строительство", "Дренаж"],
+    title: "Системы управления",
+    desc: "Шкафы управления погружным оборудованием с защитой от сухого хода, перегрева, перегрузки. Интеграция с SCADA и АСУ ТП.",
+    specs: ["SCADA интеграция", "АСУ ТП", "Мониторинг 24/7"],
+    img: IMG_CONTROL,
   },
   {
     num: "06",
-    title: "КИП и автоматика",
-    desc: "Системы контроля, измерительные приборы и автоматика для насосных установок. Интеграция с SCADA и АСУ ТП.",
-    specs: ["SCADA интеграция", "АСУ ТП", "Мониторинг 24/7"],
+    title: "Мобильные транспортировщики",
+    desc: "Мобильные насосные агрегаты на прицепных рамах и колёсных шасси для оперативной переброски и перекачки на объектах.",
+    specs: ["Мобильность", "Быстрый монтаж", "Дизельные/электро"],
+    img: IMG_MOBILE,
   },
 ];
 
 const CATEGORIES_GRID = [
-  { title: "Центробежные насосы", icon: "Waves", col: "col-span-2 row-span-2", desc: "Широкий ассортимент", dark: true },
-  { title: "Насосные станции", icon: "Building2", col: "col-span-1 row-span-1", desc: "Под ключ", dark: false },
-  { title: "Погружные насосы", icon: "ArrowDown", col: "col-span-1 row-span-1", desc: "IP68", dark: false },
-  { title: "Дренажные", icon: "Droplets", col: "col-span-1 row-span-1", desc: "Строительство", dark: false },
-  { title: "Скважинные насосы", icon: "Zap", col: "col-span-1 row-span-2", desc: "Глубокое бурение", dark: false },
-  { title: "Химические насосы", icon: "FlaskConical", col: "col-span-1 row-span-1", desc: "Агрессивные среды", dark: false },
-  { title: "Для нефтепродуктов", icon: "Fuel", col: "col-span-1 row-span-1", desc: "ATEX исполнение", dark: false },
-  { title: "Запорная арматура", icon: "Settings", col: "col-span-2 row-span-1", desc: "DN15–DN2000, до 400 бар", dark: false },
-  { title: "КИП и автоматика", icon: "Cpu", col: "col-span-1 row-span-1", desc: "SCADA, АСУ ТП", dark: false },
-  { title: "Запасные части", icon: "Wrench", col: "col-span-1 row-span-1", desc: "Оригинал и аналоги", dark: false },
+  { title: "Насосные станции", icon: "Building2", col: "col-span-2 row-span-2", desc: "Блочно-модульное исполнение под ключ", dark: true, img: IMG_PUMP_STATION },
+  { title: "Насосы для орошения", icon: "Sprout", col: "col-span-1 row-span-1", desc: "Сельское хозяйство", dark: false, img: null },
+  { title: "Насосы для грязной воды", icon: "Droplets", col: "col-span-1 row-span-1", desc: "Включения до 50 мм", dark: false, img: null },
+  { title: "Погружные насосы", icon: "ArrowDown", col: "col-span-1 row-span-2", desc: "IP68, до 500 м глубины", dark: false, img: IMG_SUBMERSIBLE },
+  { title: "Системы управления", icon: "Cpu", col: "col-span-1 row-span-1", desc: "SCADA, АСУ ТП", dark: false, img: null },
+  { title: "Аналоги МЗ ПОТОК", icon: "Repeat2", col: "col-span-1 row-span-1", desc: "Взаимозаменяемые модели", dark: false, img: null },
+  { title: "Армированные шланги", icon: "Cable", col: "col-span-1 row-span-1", desc: "NBR/TPU/ПНД", dark: false, img: null },
+  { title: "Мобильные транспортировщики", icon: "Truck", col: "col-span-2 row-span-1", desc: "Оперативная переброска, дизельные и электро", dark: false, img: IMG_MOBILE },
+  { title: "Перемешивание/аэрирование", icon: "Wind", col: "col-span-1 row-span-1", desc: "Миксеры и аэраторы", dark: false, img: null },
+  { title: "Расходомеры", icon: "Gauge", col: "col-span-1 row-span-1", desc: "Точный учёт", dark: false, img: null },
+  { title: "Компрессоры", icon: "Zap", col: "col-span-1 row-span-1", desc: "Промышленные серии", dark: false, img: null },
+  { title: "Запасные части", icon: "Wrench", col: "col-span-1 row-span-1", desc: "Оригинал и аналоги", dark: false, img: null },
 ];
 
 const ADVANTAGES = [
@@ -92,6 +110,12 @@ const STATS = [
   { value: "3200", label: "объектов" },
   { value: "8000+", label: "позиций склад" },
   { value: "35", label: "инженеров" },
+];
+
+const SOCIAL_LINKS = [
+  { name: "Telegram", icon: "MessageCircle", href: "#", color: "#26A5E4" },
+  { name: "ВКонтакте", icon: "Users", href: "#", color: "#0077FF" },
+  { name: "YouTube", icon: "Play", href: "#", color: "#FF0000" },
 ];
 
 export default function Index() {
@@ -143,15 +167,10 @@ export default function Index() {
     <div className="min-h-screen bg-white font-golos">
 
       {/* ===== HEADER ===== */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_hsl(var(--border))]" : "bg-white/80 backdrop-blur-sm"}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#f4f5f6]/97 backdrop-blur-md shadow-[0_1px_0_0_hsl(var(--border))]" : "bg-[#f4f5f6]/95 backdrop-blur-sm"}`}>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-sage flex items-center justify-center">
-              <Icon name="Waves" size={14} className="text-white" />
-            </div>
-            <span className="text-sm tracking-tight text-foreground font-semibold">
-              ИН<span className="text-sage font-black">АГРОТЕХ</span>
-            </span>
+          <a href="/" className="flex items-center">
+            <img src={LOGO_URL} alt="Инагротех" className="h-9 w-auto object-contain" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -173,10 +192,10 @@ export default function Index() {
             {menuOpen && (
               <div className="absolute right-0 top-12 w-72 bg-white border border-border rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] overflow-hidden" style={{ animation: "scaleIn 0.2s ease both", transformOrigin: "top right" }}>
                 <div className="p-2">
-                  {ALL_SECTIONS.map((s, i) => (
-                    <a key={i} href={s.href}
+                  {CATALOG_LIST.map((s, i) => (
+                    <a key={i} href="#"
                       className="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm text-foreground hover:bg-sage-pale hover:text-sage transition-colors duration-150 group">
-                      <span>{s.title}</span>
+                      <span>{s}</span>
                       <Icon name="ChevronRight" size={14} className="text-muted-foreground group-hover:text-sage transition-colors" />
                     </a>
                   ))}
@@ -195,24 +214,35 @@ export default function Index() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 75% 75% at 68% 50%, hsl(148 25% 88% / 0.95) 0%, hsl(150 18% 94% / 0.55) 45%, white 72%)" }} />
-        <div className="absolute inset-0 opacity-[0.022]" style={{ backgroundImage: "linear-gradient(hsl(148 28% 32%) 1px, transparent 1px), linear-gradient(90deg, hsl(148 28% 32%) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ paddingTop: "64px" }}>
+        <div className="absolute inset-0">
+          <img src={BG_GRADIENT} alt="" className="w-full h-full object-cover" />
+        </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-24 pb-16 w-full">
+        {/* Social sidebar */}
+        <div className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3" style={{ animation: "fadeIn 0.8s ease 0.8s both" }}>
+          {SOCIAL_LINKS.map((s) => (
+            <a key={s.name} href={s.href} title={s.name}
+              className="w-9 h-9 rounded-xl flex items-center justify-center bg-white/85 backdrop-blur-sm border border-white/60 shadow-sm hover:scale-110 transition-transform duration-200">
+              <Icon name={s.icon} size={16} style={{ color: s.color }} fallback="Link" />
+            </a>
+          ))}
+        </div>
+
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 pt-8 pb-12 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left */}
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sage-pale border border-sage-light text-xs font-medium text-sage-dark tracking-wide uppercase" style={{ animation: "fadeUp 0.7s ease 0.1s both" }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-sage animate-pulse-soft" />
-                Промышленное насосное оборудование
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sage-pale border border-sage-light text-xs font-semibold text-sage-dark tracking-wide uppercase" style={{ animation: "fadeUp 0.7s ease 0.1s both" }}>
+                <Icon name="CheckCircle2" size={14} className="text-sage" />
+                Российский производитель
               </div>
 
               <div style={{ animation: "fadeUp 0.7s ease 0.2s both" }}>
-                <h1 className="text-5xl lg:text-6xl font-black text-foreground leading-[1.07] tracking-tight">
+                <h1 className="text-5xl lg:text-6xl font-light text-foreground leading-[1.07] tracking-tight">
                   Промышленные<br />
-                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, hsl(148 28% 30%), hsl(148 28% 50%))" }}>
+                  <span className="font-semibold text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, hsl(148 28% 24%), hsl(148 28% 44%))" }}>
                     насосы
                   </span>{" "}и<br />
                   насосные станции
@@ -228,17 +258,18 @@ export default function Index() {
                   Получить консультацию
                   <Icon name="ArrowRight" size={16} />
                 </button>
-                <button className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
+                <button className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-border bg-white/70 text-foreground text-sm font-medium hover:border-sage-light hover:bg-sage-pale transition-all duration-200">
                   <Icon name="Phone" size={15} className="text-sage" />
                   Позвонить
                 </button>
               </div>
 
-              <div className="flex items-center gap-8 pt-2 border-t border-border" style={{ animation: "fadeUp 0.7s ease 0.5s both" }}>
+              {/* Stats — larger, modern */}
+              <div className="grid grid-cols-3 gap-4 pt-2" style={{ animation: "fadeUp 0.7s ease 0.5s both" }}>
                 {STATS.slice(0, 3).map((s, i) => (
-                  <div key={i} className="flex flex-col">
-                    <span className="text-xl font-black text-foreground">{s.value}</span>
-                    <span className="text-xs text-muted-foreground mt-0.5">{s.label}</span>
+                  <div key={i} className="bg-white/70 backdrop-blur-sm rounded-2xl px-5 py-4 border border-white/80 shadow-sm text-center">
+                    <div className="text-3xl font-light text-foreground tracking-tight">{s.value}</div>
+                    <div className="text-[11px] text-muted-foreground mt-1 leading-tight">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -246,62 +277,59 @@ export default function Index() {
 
             {/* Right: Pump */}
             <div className="relative flex items-center justify-center" style={{ animation: "scaleIn 0.8s ease 0.3s both" }}>
-              <div className="absolute w-[480px] h-[480px] rounded-full border border-sage-light/35 opacity-50" />
-              <div className="absolute w-[360px] h-[360px] rounded-full border border-sage-light/50 opacity-60" />
-              <div className="absolute w-[240px] h-[240px] rounded-full border border-sage-light/70 opacity-70" />
-              <div className="absolute w-72 h-72 rounded-full opacity-25 blur-3xl" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
+              <div className="absolute w-72 h-72 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, hsl(148 40% 68%), transparent 70%)" }} />
 
               <img src={HERO_IMAGE} alt="Промышленный насос"
-                className="animate-float-pump relative z-10 w-full max-w-[440px] object-contain"
+                className="animate-float-pump relative z-10 w-full max-w-[500px] object-contain"
                 style={{ filter: "drop-shadow(0 30px 60px rgba(74, 112, 74, 0.22))" }}
               />
 
-              <div className="absolute top-8 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-xl px-4 py-3 shadow-sm z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
-                <div className="text-xs text-muted-foreground">Производительность</div>
-                <div className="text-base font-bold text-foreground mt-0.5">до 5000 м³/ч</div>
+              <div className="absolute top-8 right-4 lg:right-0 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.6s both" }}>
+                <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Производительность</div>
+                <div className="text-2xl font-light text-foreground mt-0.5">до 5000 м³/ч</div>
               </div>
 
-              <div className="absolute bottom-12 left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-xl px-4 py-3 shadow-sm z-20" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-sage-pale flex items-center justify-center">
-                    <Icon name="ShieldCheck" size={16} className="text-sage" />
+              <div className="absolute bottom-12 left-0 lg:-left-4 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.7s both" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sage-pale flex items-center justify-center">
+                    <Icon name="ShieldCheck" size={20} className="text-sage" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Гарантия</div>
-                    <div className="text-sm font-bold text-foreground">36 месяцев</div>
+                    <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Гарантия</div>
+                    <div className="text-xl font-light text-foreground">36 месяцев</div>
                   </div>
                 </div>
+              </div>
+
+              <div className="absolute bottom-32 right-0 lg:right-2 bg-white/92 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-md z-20" style={{ animation: "fadeUp 0.6s ease 0.75s both" }}>
+                <div className="text-[11px] text-muted-foreground uppercase tracking-wide">Напор</div>
+                <div className="text-2xl font-light text-foreground mt-0.5">до 1200 м</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
 
-      {/* ===== SLIDER ===== */}
-      <section id="slider" className="py-24 bg-white">
+      {/* ===== SLIDER / CATEGORIES ===== */}
+      <section id="slider" className="pt-12 pb-20 bg-white">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-10">
             <div>
               <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3 font-medium">Ассортимент</div>
-              <h2 className="text-4xl font-black text-foreground tracking-tight">
-                Категории<br />и компоненты
+              <h2 className="text-4xl font-light text-foreground tracking-tight">
+                Категории и<br />компоненты
               </h2>
             </div>
-            <div className="flex items-center gap-3">
-              <button onClick={() => goToSlide((activeSlide - 1 + SLIDER_CATEGORIES.length) % SLIDER_CATEGORIES.length)}
-                className="w-11 h-11 rounded-xl border border-border flex items-center justify-center hover:bg-sage-pale hover:border-sage-light transition-colors">
-                <Icon name="ChevronLeft" size={18} />
-              </button>
-              <button onClick={() => goToSlide((activeSlide + 1) % SLIDER_CATEGORIES.length)}
-                className="w-11 h-11 rounded-xl border border-border flex items-center justify-center hover:bg-sage-pale hover:border-sage-light transition-colors">
-                <Icon name="ChevronRight" size={18} />
-              </button>
-            </div>
+            <button onClick={() => handleNavClick("#categories")}
+              className="hidden lg:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              Весь каталог
+              <Icon name="ArrowRight" size={16} />
+            </button>
           </div>
 
-          <div className="flex gap-3 h-[340px]">
+          <div className="flex gap-3 h-[360px]">
             {SLIDER_CATEGORIES.map((cat, i) => {
               const isActive = i === activeSlide;
               return (
@@ -314,43 +342,54 @@ export default function Index() {
                       : "hsl(var(--grey-pale))",
                   }}
                 >
-                  <div className={`absolute select-none font-black transition-all duration-500 ${
+                  {/* Big number */}
+                  <div className={`absolute select-none font-thin transition-all duration-500 ${
                     isActive
-                      ? "top-6 left-6 text-white/15 text-7xl"
-                      : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-muted-foreground/30"
+                      ? "top-6 left-6 text-white/10 text-[120px] leading-none"
+                      : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl text-muted-foreground/20"
                   }`}>
                     {cat.num}
                   </div>
 
                   {!isActive && (
                     <div className="absolute inset-0 flex items-end justify-center pb-5 px-2">
-                      <span className="text-xs font-semibold text-muted-foreground text-center leading-tight">
+                      <span className="text-xs font-medium text-muted-foreground text-center leading-tight">
                         {cat.title}
                       </span>
                     </div>
                   )}
 
                   {isActive && (
-                    <div className="absolute inset-0 p-7 flex flex-col justify-between" key={`active-${i}`}>
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-3 mt-5" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
-                          {cat.title}
-                        </h3>
-                        <p className="text-sm text-white/65 leading-relaxed max-w-xs" style={{ animation: "fadeUp 0.45s ease 0.2s both" }}>
-                          {cat.desc}
-                        </p>
+                    <div className="absolute inset-0 flex" key={`active-${i}`}>
+                      {/* Left content */}
+                      <div className="flex-1 p-7 flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-xl font-light text-white mb-3 mt-6" style={{ animation: "fadeUp 0.45s ease 0.1s both" }}>
+                            {cat.title}
+                          </h3>
+                          <p className="text-sm text-white/65 leading-relaxed max-w-xs" style={{ animation: "fadeUp 0.45s ease 0.2s both" }}>
+                            {cat.desc}
+                          </p>
+                        </div>
+                        <div className="flex items-end justify-between" style={{ animation: "fadeUp 0.45s ease 0.3s both" }}>
+                          <div className="flex flex-wrap gap-2">
+                            {cat.specs.map((spec, si) => (
+                              <span key={si} className="text-xs px-3 py-1.5 rounded-full bg-white/12 text-white font-medium backdrop-blur-sm">
+                                {spec}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="w-10 h-10 rounded-xl bg-white/12 flex items-center justify-center flex-shrink-0 ml-3">
+                            <Icon name="ArrowRight" size={18} className="text-white" />
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex items-end justify-between" style={{ animation: "fadeUp 0.45s ease 0.3s both" }}>
-                        <div className="flex flex-wrap gap-2">
-                          {cat.specs.map((spec, si) => (
-                            <span key={si} className="text-xs px-3 py-1.5 rounded-full bg-white/12 text-white font-medium backdrop-blur-sm">
-                              {spec}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="w-10 h-10 rounded-xl bg-white/12 flex items-center justify-center flex-shrink-0">
-                          <Icon name="ArrowRight" size={18} className="text-white" />
-                        </div>
+                      {/* Right image */}
+                      <div className="w-48 lg:w-64 flex items-end justify-center pb-0 relative overflow-hidden" style={{ animation: "fadeIn 0.5s ease 0.2s both" }}>
+                        <img src={cat.img} alt={cat.title}
+                          className="w-full h-full object-cover object-left opacity-70"
+                          style={{ maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.6) 30%, black 60%)" }}
+                        />
                       </div>
                     </div>
                   )}
@@ -359,7 +398,7 @@ export default function Index() {
             })}
           </div>
 
-          <div className="flex items-center gap-2 mt-6">
+          <div className="flex items-center gap-2 mt-5">
             {SLIDER_CATEGORIES.map((_, i) => (
               <button key={i} onClick={() => goToSlide(i)}
                 className="transition-all duration-300 rounded-full"
@@ -390,7 +429,7 @@ export default function Index() {
                 {STATS.map((s, i) => (
                   <div key={i} className={`flex items-baseline justify-between ${i > 0 ? "mt-3 pt-3 border-t border-border" : ""}`}>
                     <span className="text-xs text-muted-foreground">{s.label}</span>
-                    <span className="text-lg font-black text-foreground">{s.value}</span>
+                    <span className="text-lg font-semibold text-foreground">{s.value}</span>
                   </div>
                 ))}
               </div>
@@ -401,13 +440,13 @@ export default function Index() {
             <div className="space-y-8 lg:pl-6">
               <div>
                 <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3 font-medium">О компании</div>
-                <h2 className="text-4xl font-black text-foreground tracking-tight leading-tight">
+                <h2 className="text-4xl font-light text-foreground tracking-tight leading-tight">
                   20 лет экспертизы<br />в промышленном<br />насосостроении
                 </h2>
               </div>
 
               <p className="text-muted-foreground leading-relaxed text-[15px]">
-                МЗ Поток — ведущий поставщик промышленного насосного оборудования в России. Работаем с 2004 года. За это время реализовали более 3 200 объектов в нефтегазовой, химической, металлургической отраслях и ЖКХ.
+                Инагротех — российский производитель и поставщик промышленного насосного оборудования. Работаем с 2004 года. За это время реализовали более 3 200 объектов в сельском хозяйстве, нефтегазовой, химической и металлургической отраслях.
               </p>
 
               <p className="text-muted-foreground leading-relaxed text-[15px]">
@@ -439,52 +478,194 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ===== CATEGORIES GRID ===== */}
-      <section id="categories" className="py-24 bg-white">
+      {/* ===== CATEGORIES GRID / CATALOG ===== */}
+      <section id="categories" className="py-20 bg-white">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3 font-medium">Каталог</div>
-            <h2 className="text-4xl font-black text-foreground tracking-tight">
+            <h2 className="text-4xl font-light text-foreground tracking-tight">
               Все категории<br />оборудования
             </h2>
           </div>
 
-          <div className="grid grid-cols-4 grid-rows-3 gap-4 h-[560px]">
-            {CATEGORIES_GRID.map((cat, i) => (
-              <a key={i} href="#"
-                className={`cat-card relative rounded-2xl overflow-hidden cursor-pointer group ${cat.col}`}
-                style={{
-                  background: cat.dark
-                    ? "linear-gradient(135deg, hsl(148 28% 19%), hsl(148 26% 29%))"
-                    : i % 4 === 1
-                    ? "hsl(var(--sage-pale))"
-                    : i % 3 === 0
-                    ? "hsl(var(--grey-pale))"
-                    : "hsl(var(--grey-light))",
-                }}
-              >
-                <div className={`absolute top-5 left-5 w-10 h-10 rounded-xl flex items-center justify-center ${cat.dark ? "bg-white/15" : "bg-white"}`}>
-                  <Icon name={cat.icon} size={18} className={cat.dark ? "text-white" : "text-sage"} fallback="Waves" />
-                </div>
+          {/* Masonry-style grid */}
+          <div className="grid grid-cols-4 gap-3" style={{ gridAutoRows: "140px" }}>
+            {/* 1: Насосные станции — big 2x2 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-2"
+              style={{ background: "linear-gradient(135deg, hsl(148 28% 19%), hsl(148 26% 29%))" }}>
+              <img src={IMG_PUMP_STATION} alt="Насосные станции" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+              <div className="absolute top-5 left-5 w-11 h-11 rounded-xl flex items-center justify-center bg-white/15">
+                <Icon name="Building2" size={20} className="text-white" fallback="Waves" />
+              </div>
+              <div className="absolute top-4 right-5 text-6xl font-thin text-white/10 select-none leading-none">01</div>
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-light text-white text-lg leading-tight mb-1">Насосные станции</h3>
+                <p className="text-xs text-white/55">Блочно-модульное исполнение под ключ</p>
+              </div>
+              <div className="absolute top-5 right-5 w-8 h-8 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white/18">
+                <Icon name="ArrowUpRight" size={14} className="text-white" />
+              </div>
+            </a>
 
-                <div className={`absolute top-4 right-5 text-xs font-bold tracking-wide ${cat.dark ? "text-white/25" : "text-muted-foreground/35"}`}>
-                  {String(i + 1).padStart(2, "0")}
-                </div>
+            {/* 2: Насосы для орошения — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--sage-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Sprout" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">02</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Насосы для орошения и полива</h3>
+              </div>
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
+              </div>
+            </a>
 
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className={`font-bold leading-tight mb-1 ${cat.dark ? "text-white text-lg" : "text-foreground text-sm"}`}>
-                    {cat.title}
-                  </h3>
-                  <p className={`text-xs ${cat.dark ? "text-white/55" : "text-muted-foreground"}`}>
-                    {cat.desc}
-                  </p>
-                </div>
+            {/* 3: Насосы для грязной воды — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Droplets" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">03</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Насосы для загрязнённой воды</h3>
+              </div>
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
+              </div>
+            </a>
 
-                <div className={`absolute top-5 right-5 w-8 h-8 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-1.5 group-hover:translate-x-0 ${cat.dark ? "bg-white/18" : "bg-white"}`}>
-                  <Icon name="ArrowUpRight" size={14} className={cat.dark ? "text-white" : "text-sage"} />
-                </div>
-              </a>
-            ))}
+            {/* 4: Погружные насосы — 1x2 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-2"
+              style={{ background: "hsl(220 18% 96%)" }}>
+              <img src={IMG_SUBMERSIBLE} alt="Погружные насосы" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="ArrowDown" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-4xl font-thin text-muted-foreground/20 select-none leading-none">04</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight mb-1">Погружные насосы и миксеры</h3>
+                <p className="text-xs text-muted-foreground">IP68, до 500 м</p>
+              </div>
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
+              </div>
+            </a>
+
+            {/* 5: Системы управления — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Cpu" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">05</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Системы управления</h3>
+              </div>
+            </a>
+
+            {/* 6: Аналоги МЗ ПОТОК — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--sage-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Repeat2" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">06</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Аналоги насосов МЗ ПОТОК</h3>
+              </div>
+            </a>
+
+            {/* 7: Мобильные транспортировщики — 2x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-2 row-span-1"
+              style={{ background: "hsl(220 14% 94%)" }}>
+              <img src={IMG_MOBILE} alt="Мобильные транспортировщики" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Truck" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-4xl font-thin text-muted-foreground/20 select-none leading-none">07</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Мобильные транспортировщики</h3>
+                <p className="text-xs text-muted-foreground">Дизельные и электро</p>
+              </div>
+              <div className="absolute top-4 right-4 w-7 h-7 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white">
+                <Icon name="ArrowUpRight" size={12} className="text-sage" />
+              </div>
+            </a>
+
+            {/* 8: Армированные шланги — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Cable" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">08</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Армированные шланги NBR/TPU/ПНД</h3>
+              </div>
+            </a>
+
+            {/* 9: Перемешивание — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--sage-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Wind" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">09</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Перемешивание / аэрирование</h3>
+              </div>
+            </a>
+
+            {/* 10: Оборудование для внесения — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Leaf" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">10</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Оборудование для внесения</h3>
+              </div>
+            </a>
+
+            {/* 11: Расходомеры — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--sage-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Gauge" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">11</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Расходомеры</h3>
+              </div>
+            </a>
+
+            {/* 12: Компрессоры — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Zap" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">12</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Компрессоры</h3>
+              </div>
+            </a>
+
+            {/* 13: Запасные части — 1x1 */}
+            <a href="#" className="cat-card relative rounded-2xl overflow-hidden cursor-pointer group col-span-1 row-span-1"
+              style={{ background: "hsl(var(--grey-pale))" }}>
+              <div className="absolute top-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center bg-white">
+                <Icon name="Wrench" size={16} className="text-sage" fallback="Waves" />
+              </div>
+              <div className="absolute top-3 right-4 text-3xl font-thin text-muted-foreground/20 select-none leading-none">13</div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-medium text-foreground text-sm leading-tight">Запасные части</h3>
+              </div>
+            </a>
           </div>
 
           <div className="mt-8 flex justify-center">
@@ -502,7 +683,7 @@ export default function Index() {
           <div className="flex items-end justify-between mb-14">
             <div>
               <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3 font-medium">Почему мы</div>
-              <h2 className="text-4xl font-black text-foreground tracking-tight">
+              <h2 className="text-4xl font-light text-foreground tracking-tight">
                 Преимущества<br />работы с нами
               </h2>
             </div>
@@ -514,13 +695,13 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ADVANTAGES.map((adv, i) => (
               <div key={i} className="adv-card group relative p-7 rounded-2xl bg-white border border-border cursor-default">
-                <div className="adv-num absolute top-6 right-7 text-4xl font-black text-foreground/5 group-hover:text-white/10 transition-colors duration-300 select-none">
+                <div className="adv-num absolute top-6 right-7 text-4xl font-thin text-foreground/5 group-hover:text-white/10 transition-colors duration-300 select-none">
                   {adv.num}
                 </div>
                 <div className="adv-icon w-12 h-12 rounded-xl bg-sage-pale flex items-center justify-center mb-5 transition-all duration-300">
                   <Icon name={adv.icon} size={22} className="text-sage group-hover:text-white transition-colors duration-300" fallback="CheckCircle" />
                 </div>
-                <h3 className="font-bold text-foreground group-hover:text-white text-base mb-2.5 transition-colors duration-300">
+                <h3 className="font-semibold text-foreground group-hover:text-white text-base mb-2.5 transition-colors duration-300">
                   {adv.title}
                 </h3>
                 <p className="text-sm text-muted-foreground group-hover:text-white/70 leading-relaxed transition-colors duration-300">
@@ -543,7 +724,7 @@ export default function Index() {
             <div className="relative grid lg:grid-cols-2 gap-10 items-center">
               <div>
                 <div className="text-xs uppercase tracking-[0.15em] text-white/45 mb-4 font-medium">Связаться с нами</div>
-                <h2 className="text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                <h2 className="text-3xl lg:text-4xl font-light text-white leading-tight mb-4">
                   Подберём оборудование<br />под ваш объект
                 </h2>
                 <p className="text-white/55 text-sm leading-relaxed max-w-sm">
@@ -551,7 +732,7 @@ export default function Index() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 lg:justify-end">
-                <button className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-white text-sage font-bold text-sm hover:bg-sage-pale transition-all duration-200 shadow-lg">
+                <button className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-white text-sage font-semibold text-sm hover:bg-sage-pale transition-all duration-200 shadow-lg">
                   <Icon name="MessageSquare" size={16} />
                   Получить консультацию
                 </button>
@@ -570,20 +751,25 @@ export default function Index() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-sage flex items-center justify-center">
-                  <Icon name="Waves" size={14} className="text-white" />
-                </div>
-                <span className="text-sm tracking-tight font-semibold">ИН<span className="text-sage font-black">АГРОТЕХ</span></span>
+              <div className="mb-4">
+                <img src={LOGO_URL} alt="Инагротех" className="h-8 w-auto object-contain" />
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Промышленные насосы и насосные станции. Поставка, монтаж, обслуживание с 2004 года.
+                Российский производитель промышленных насосов и насосных станций. Поставка, монтаж, обслуживание с 2004 года.
               </p>
+              <div className="flex items-center gap-3 mt-4">
+                {SOCIAL_LINKS.map((s) => (
+                  <a key={s.name} href={s.href} title={s.name}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#f4f5f6] hover:bg-sage-pale transition-colors duration-200">
+                    <Icon name={s.icon} size={14} className="text-muted-foreground" fallback="Link" />
+                  </a>
+                ))}
+              </div>
             </div>
             {[
-              { title: "Каталог", links: ["Центробежные насосы", "Насосные станции", "Погружные насосы", "Запорная арматура"] },
+              { title: "Каталог", links: ["Насосные станции", "Насосы для орошения", "Погружные насосы", "Аналоги МЗ ПОТОК"] },
               { title: "Компания", links: ["О компании", "Сертификаты", "Партнёры", "Вакансии"] },
-              { title: "Контакты", links: ["+7 800 123-45-67", "info@mzpotok.ru", "Москва, ул. Промышленная, 1", "Пн–Пт 9:00–18:00"] },
+              { title: "Контакты", links: ["+7 800 123-45-67", "info@inagroteh.ru", "Москва, ул. Промышленная, 1", "Пн–Пт 9:00–18:00"] },
             ].map((col, i) => (
               <div key={i}>
                 <div className="text-xs uppercase tracking-[0.12em] font-bold text-foreground mb-4">{col.title}</div>
